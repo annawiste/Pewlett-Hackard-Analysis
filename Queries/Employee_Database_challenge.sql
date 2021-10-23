@@ -21,6 +21,16 @@ INTO unique_titles
 FROM retirement_titles as rt
 ORDER BY rt.emp_no, rt.to_date DESC;
 
---Retrieve number of retirement age employees by title
 
+--Retrieve number of unique titles
+SELECT COUNT (DISTINCT title)
+FROM unique_titles
+
+--Retrieve number of retirement age employees by title 
+
+SELECT COUNT (emp_no), title
+INTO retiring_titles
+FROM unique_titles
+GROUP BY title
+ORDER BY COUNT (emp_no) DESC
 
